@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+
+curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor > /usr/share/keyrings/nginx-archive-keyring.gpg
+
+echo -e "Types: deb\n\
+URIs: https://nginx.org/packages/debian\n\
+Suites: $RELEASE\n\
+Components: nginx\n\
+Architectures: amd64 arm64\n\
+Signed-By: /usr/share/keyrings/nginx-archive-keyring.gpg" > /etc/apt/sources.list.d/nginx.sources
+
+apt-get update
+
+DEBIAN_FRONTEND=noninteractive \
+apt-get -y --no-install-recommends \
+    -o Dpkg::Options::="--force-confdef" \
+    -o Dpkg::Options::="--force-confold" \
+    install nginx

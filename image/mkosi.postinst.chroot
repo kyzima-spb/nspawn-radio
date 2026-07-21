@@ -1,0 +1,14 @@
+#!/bin/bash
+set -eo pipefail
+
+
+for script in "$SRCDIR/postinst.chroot/"*; do
+    echo "Run postinst script: $script"
+    [[ ! -f "$script" ]] || "$script"
+done
+
+
+for script in "$SRCDIR/mkosi.profiles/$PROFILES/postinst.chroot/"*; do
+    echo "Run postinst script: $script"
+    [[ ! -f "$script" ]] || "$script"
+done

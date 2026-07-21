@@ -1,0 +1,16 @@
+[Unit]
+Description=Liquidsoap
+Requires=icecast2.service
+After=network-online.target icecast2.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=liquidsoap
+Group=liquidsoap
+ExecStart=/usr/bin/liquidsoap /etc/liquidsoap/main.liq
+Restart=on-failure
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+[
+  {
+    "mount": "/silent.ogg",
+    "name": "Silence test stream",
+    "description": "If you don't hear anything, then it's okay",
+    "source": {"type": "blank"}
+  }
+]

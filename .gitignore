@@ -1,0 +1,6 @@
+env/
+*/mkosi.cache/*
+*/mkosi.output/*
+*/mkosi.tools/
+
+!.gitkeep
